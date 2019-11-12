@@ -1,0 +1,13 @@
+
+.incorrect, .btn.incorrect:hover, .btn.incorrect:focus {
+    background-color:  #ff8080;
+}
+
+h2 {
+    margin-top: 10px;
+    padding: 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 24px;
+    background-color: #e6ccff;
+}
