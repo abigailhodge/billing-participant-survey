@@ -7,6 +7,15 @@
   margin-top: 10px;
 }
 
+.lower-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.submit-button, .submit-button:hover, .submit-button:focus {
+  background-color: #e6ccff;
+}
+
 h2 {
   margin-top: 10px;
   padding: 5px;
