@@ -12,7 +12,7 @@
   margin-bottom: 20px;
 }
 
-.submit-button, .submit-button:hover, .submit-button:focus {
+#submit-button, #submit-button:hover, #submit-button:focus {
   background-color: #e6ccff;
 }
 

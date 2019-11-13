@@ -1,5 +1,7 @@
+const electron = require('electron')
 const { app, BrowserWindow } = require('electron');
 const DataStore = require('./DataStore'); 
+var ipc = electron.ipcMain;
 
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -10,12 +12,17 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
+let testWindow;
+var wordsSelected = {};
 
 const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    webPreferences: {
+      nodeIntegration: true
+    },
   });
 
   // and load the index.html of the app.
@@ -53,6 +60,21 @@ app.on('activate', () => {
   if (mainWindow === null) {
     createWindow();
   }
+});
+
+ipc.on('word-button-toggled', (event, arg) => {
+  wordsSelected[arg] = !wordsSelected[arg];
+});
+
+ipc.on('init-word', (event, arg) => {
+  wordsSelected[arg] = false;
+});
+
+ipc.on('submit-answers', () => {
+  ds = new DataStore();
+  ds.initUser("AbbyBeecher");
+  ds.setUserWordAnswers(wordsSelected);
+  ds.saveUserData();
 });
 
 

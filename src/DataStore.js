@@ -6,7 +6,9 @@ class DataStore extends Store {
 
         this.userData = {
             "userID": 0,
-            "userWordAnswers": {}
+            "userWordAnswers": {},
+            "userOEAnswers":{},
+            "userDemographics":{},
         }
     }
 
