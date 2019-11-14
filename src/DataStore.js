@@ -1,11 +1,12 @@
 const Store = require('electron-store');
 
+// saves and loads data to the config.json file in this app's AppData 
 class DataStore extends Store {
     constructor(settings) {
         super(settings);
-
         this.userData = {
             "userID": 0,
+            "userStudies": [],
             "userWordAnswers": {},
             "userOEAnswers":{},
             "userDemographics":{},
@@ -24,15 +25,37 @@ class DataStore extends Store {
     }
 
     getUserData(userID) {
-        this.get(userID);
+        return this.get(userID);
     } 
 
     initUser(userID) {
-        this.userData.userID = userID;
+        if (typeof(this.getUserData(userID)) === 'undefined') {
+            this.userData.userID = userID;
+            this.userData.userStudies = [];
+        } else {
+            console.log('loading correct user')
+            this.userData = this.getUserData(userID)
+        }
+
+    }
+
+    checkUserStudy(userID, studyID) {
+        var userToCheck = this.getUserData(userID)
+        return userToCheck.userStudies.includes(studyID);
+    }
+
+    addUserStudy(studyID) {
+        console.log(this.userData);
+        console.log(this.studyID)
+        this.userData.userStudies.push(studyID);
     }
 
     setUserWordAnswers(wordAnswers) {
         this.userData.userWordAnswers = wordAnswers;
+    }
+
+    setUserQuestionnaireOneAnswers(questionnaireOneAnswers) {
+        this.userData.userDemographics = questionnaireOneAnswers;
     }
 }
 

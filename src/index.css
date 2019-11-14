@@ -12,7 +12,7 @@
   margin-bottom: 20px;
 }
 
-#submit-button, #submit-button:hover, #submit-button:focus {
+.btn-primary, .btn-primary:hover, .btn-primary:focus {
   background-color: #e6ccff;
 }
 
@@ -23,4 +23,8 @@ h2 {
   display: inline-block;
   font-size: 24px;
   background-color: #e6ccff;
+}
+
+.form-group {
+  margin-top: 25px;
 }

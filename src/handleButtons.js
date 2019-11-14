@@ -1,3 +1,5 @@
+// event listeners for word and submit buttons
+
 var electron = require('electron');
 var ipc = electron.ipcRenderer;
 
@@ -19,5 +21,6 @@ for (var i = 0; i < wordButtons.length; i++) {
 var submitButton = document.getElementById("submit-button");
 var submitDoc = function() {
     ipc.send('submit-answers');
+    ipc.send('goToURL', 'startscreen.html')
 }
 submitButton.addEventListener('click', submitDoc, false);

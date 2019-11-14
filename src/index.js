@@ -13,10 +13,14 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 let testWindow;
+let userID;
+let ds;
 var wordsSelected = {};
 
 const createWindow = () => {
+  console.log('hit here')
   // Create the browser window.
+  // nodeIntegration = true to allow for require keyword in client-side code
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
@@ -26,10 +30,7 @@ const createWindow = () => {
   });
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
-
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  mainWindow.loadURL(`file://${__dirname}/startscreen.html`);
 
   // Emitted when the window is closed.
   mainWindow.on('closed', () => {
@@ -38,6 +39,7 @@ const createWindow = () => {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+  ds = new DataStore();
 };
 
 // This method will be called when Electron has finished
@@ -71,11 +73,37 @@ ipc.on('init-word', (event, arg) => {
 });
 
 ipc.on('submit-answers', () => {
-  ds = new DataStore();
-  ds.initUser("AbbyBeecher");
   ds.setUserWordAnswers(wordsSelected);
   ds.saveUserData();
 });
+
+ipc.on('submit-questionnaire-1', (event, arg) => {
+  ds.setUserQuestionnaireOneAnswers(arg);
+})
+
+ipc.on('goToURL', (event, arg) => {
+  mainWindow.loadURL(`file://${__dirname}/` + arg);
+});
+
+ipc.on('setup-user', (event, arg) => {
+  if (typeof(ds.getUserData(arg.participantID)) === 'undefined') {
+    ds.initUser(arg.participantID);
+    ds.addUserStudy(arg.studyID);
+    mainWindow.loadURL(`file://${__dirname}/questionnaire.html`);
+  } else if (ds.checkUserStudy(arg.participantID, arg.studyID)) {
+    mainWindow.loadURL(`file://${__dirname}/userStudyExists.html`);
+  } else {
+    mainWindow.loadURL(`file://${__dirname}/userExists.html?participantID=${arg.participantID}&studyID=${arg.studyID}`);
+  }
+});
+
+ipc.on('addUserToStudy', (event, arg) => {
+  ds.initUser(arg.participantID);
+  ds.addUserStudy(arg.studyID);
+  ds.saveUserData();
+  mainWindow.loadURL(`file://${__dirname}/startscreen.html`)
+});
+
 
 
 

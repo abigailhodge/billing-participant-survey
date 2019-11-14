@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="index.css">
+  <title>Questionnaire</title>
+</head>
+  <body>
+  <div class="container">
+      <div class="row">
+        <h2 class="col-lg-12 mx-auto">Language History Questionnaire</h2>
+      </div>
+  </div>
+  <div class="container">
+  <form id="questionnairePageOne">
+      <div class="form-group">
+          <label for="inputAge">Age (in years)</label>
+          <input type="number" class="form-control" id="inputAge" name="age" required>  
+        </div>
+          
+      <div class="form-group">
+          <label for="inputSex">Sex</label>
+          <select class="form-control" id="inputSex" name="sex">
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="inputEducation">Education (your current or most recent educational level, even if you have not finished the degree)</label>
+          <select class="form-control" id="inputEducation" name="education">
+              <option>PhD, MD, JD</option>
+              <option>Masters</option>
+              <option>Bachelors</option>
+              <option>High School</option>
+              <option>Other (specify)</option>
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="languageTable">
+              <p>Indicate the languages you have studied or learned, the age at which you started using each language, and the total number of years that you have spent using each language.* </p>
+              <p>Mark the languages you consider yourself native in and those you used to speak with your caregivers (There should be at least one language that you started using "from birth")</p>
+        </label>
+        <small class="form-text text-muted">*You may have learned a language, stopped using it, and then started using it again.
+                Fill in the "Years of use" with the total number of years, excluding the time it was not in use. For example, if one
+                learned French for 4 years in high school, did not use it for 2 years, then lived in France speaking French for 4 years,
+                then the "Years of use" would be 8 years.
+         </small>
+        <table class="table" id="languageTable">
+            <thead>
+                <tr>
+                    <th scope='col'>LANGUAGE</th>
+                    <th scope='col'>Age</th>
+                    <th scope='col'>Years of use</th>
+                    <th scope='col'>Do you consider yourself a native speaker?</th>
+                    <th scope='col'>Spoken with primary caregivers? (e.g. parent, nanny)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" class="form-control" name="langOne" required></td>
+                    <td><input class="form-control" type="number" placeholder="0" readonly></td>
+                    <td><input type="number" class="form-control" name="langOneYearsUsed" required></td>
+                    <td>
+                        <select class="form-control" name="langOneNative">
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control" name="langOneCaregiver">
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" name="langTwo"></td>
+                    <td><input type="number" class="form-control" name="langTwoAoA"></td>
+                    <td><input type="number" class="form-control" name="langTwoYearsUsed"></td>
+                    <td>
+                        <select class="form-control" name="langTwoNative">
+                            <option>Yes</option>
+                            <option selected="selected">No</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control" name="langTwoCaregiver">
+                            <option>Yes</option>
+                            <option selected="selected">No</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" name="langThree"></td>
+                    <td><input type="number" class="form-control" name="langThreeAoA"></td>
+                    <td><input type="number" class="form-control" name="langThreeYearsUsed"></td>
+                    <td>
+                        <select class="form-control" name="langThreeNative">
+                            <option>Yes</option>
+                            <option selected="selected">No</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control" name="langThreeCaregiver">
+                            <option>Yes</option>
+                            <option selected="selected">No</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="text" class="form-control" name="langFour"></td>
+                    <td><input type="number" class="form-control" name="langFourAoA"></td>
+                    <td><input type="number" class="form-control" name="langFourYearsUsed"></td>
+                    <td>
+                        <select class="form-control" name="langFourNative">
+                            <option>Yes</option>
+                            <option selected="selected">No</option>
+                        </select>
+                    </td>
+                    <td>
+                        <select class="form-control" name="langFourYearsUsed">
+                            <option>Yes</option>
+                            <option selected="selected">No</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+      <button type="submit" id="questionnairePageOneSubmit" class="btn btn-primary float-right mb-2">Next</button>
+  </form>
+</div>
+  <script src='./questionnire.js'></script>
+</div>
+</body>
