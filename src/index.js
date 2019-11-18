@@ -18,7 +18,6 @@ let ds;
 var wordsSelected = {};
 
 const createWindow = () => {
-  console.log('hit here')
   // Create the browser window.
   // nodeIntegration = true to allow for require keyword in client-side code
   mainWindow = new BrowserWindow({

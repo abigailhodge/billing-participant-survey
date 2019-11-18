@@ -25,6 +25,11 @@ h2 {
   background-color: #e6ccff;
 }
 
-.form-group {
+
+.formSection {
+  margin-top: 75px;
+}
+
+#selfRatingTable {
   margin-top: 25px;
 }

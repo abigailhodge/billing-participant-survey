@@ -7,7 +7,12 @@ var submitForm = function(event) {
     var formResults = {};
     var formItems = document.getElementsByClassName('form-control');
     for (var i = 0; i < formItems.length; i++) {
-        formResults[formItems[i].name] = formItems[i].value;
+        var formItem = formItems[i]
+        if (formItem.hasAttribute('disabled')) {
+            formResults[formItem.name] = ""
+        } else {
+            formResults[formItems[i].name] = formItems[i].value;
+        }
     }
     ipc.send('submit-questionnaire-1', formResults)
     ipc.send('goToURL', 'spelling.html');

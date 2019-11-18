@@ -43,7 +43,6 @@ class DataStore extends Store {
             this.userData.userID = userID;
             this.userData.userStudies = [];
         } else {
-            console.log('loading correct user')
             this.userData = this.getUserData(userID)
         }
 
@@ -55,8 +54,6 @@ class DataStore extends Store {
     }
 
     addUserStudy(studyID) {
-        console.log(this.userData);
-        console.log(this.studyID)
         this.userData.userStudies.push(studyID);
     }
 
