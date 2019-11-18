@@ -48,9 +48,8 @@ class DataStore extends Store {
 
     }
 
-    checkUserStudy(userID, studyID) {
-        var userToCheck = this.getUserData(userID)
-        return userToCheck.userStudies.includes(studyID);
+    checkUserStudy(studyID) {
+        return this.userData.userStudies.includes(studyID);
     }
 
     addUserStudy(studyID) {

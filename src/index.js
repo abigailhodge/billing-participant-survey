@@ -85,11 +85,11 @@ ipc.on('goToURL', (event, arg) => {
 });
 
 ipc.on('setup-user', (event, arg) => {
+  ds.initUser(arg.participantID)
   if (typeof(ds.getUserData(arg.participantID)) === 'undefined') {
-    ds.initUser(arg.participantID);
     ds.addUserStudy(arg.studyID);
     mainWindow.loadURL(`file://${__dirname}/questionnaire.html`);
-  } else if (ds.checkUserStudy(arg.participantID, arg.studyID)) {
+  } else if (ds.checkUserStudy(arg.studyID)) {
     mainWindow.loadURL(`file://${__dirname}/userStudyExists.html`);
   } else {
     mainWindow.loadURL(`file://${__dirname}/userExists.html?participantID=${arg.participantID}&studyID=${arg.studyID}`);
@@ -97,7 +97,6 @@ ipc.on('setup-user', (event, arg) => {
 });
 
 ipc.on('addUserToStudy', (event, arg) => {
-  ds.initUser(arg.participantID);
   ds.addUserStudy(arg.studyID);
   ds.saveUserData();
   mainWindow.loadURL(`file://${__dirname}/startscreen.html`)
