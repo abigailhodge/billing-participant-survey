@@ -104,6 +104,10 @@ ipc.on('addUserToStudy', (event, arg) => {
   mainWindow.loadURL(`file://${__dirname}/startscreen.html`)
 });
 
+ipc.on('getUserLangs', (event) => {
+  var userLangs = ds.getUserLangs();
+  event.reply('updateUserLangs', userLangs);
+})
 
 
 

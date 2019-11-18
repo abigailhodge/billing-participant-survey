@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="bootstrap.min.css">
   <link rel="stylesheet" href="index.css">
   <title>Questionnaire</title>
 </head>
@@ -53,7 +53,7 @@
             <thead>
                 <tr>
                     <th scope='col'>LANGUAGE</th>
-                    <th scope='col'>Age</th>
+                    <th scope='col'>Age of Acquisition</th>
                     <th scope='col'>Years of use</th>
                     <th scope='col'>Do you consider yourself a native speaker?</th>
                     <th scope='col'>Spoken with primary caregivers? (e.g. parent, nanny)</th>
@@ -62,7 +62,7 @@
             <tbody>
                 <tr>
                     <td><input type="text" class="form-control" name="langOne" required></td>
-                    <td><input class="form-control" type="number" placeholder="0" readonly></td>
+                    <td><input class="form-control" type="number" placeholder="0" value="0" name="langOneAoA" readonly></td>
                     <td><input type="number" class="form-control" name="langOneYearsUsed" required></td>
                     <td>
                         <select class="form-control" name="langOneNative">
@@ -130,7 +130,76 @@
                 </tr>
             </tbody>
         </table>
-      </div>
+    </div>
+    <div class="form-group">
+         <label for="inputCountryOrigin">Country of origin</label>
+         <input type="text" class="form-control" id="inputCountryOrigin" name="countryOrigin" required>  
+    </div>
+    <div class="form-group">
+        <label for="inputCountryResidence">Country of residence</label>
+        <input type="text" class="form-control" id="inputCountryResidence" name="countryResidence" required>  
+    </div>
+    <div class="form-group">
+        <label for="inputYearMoved">If country of origin and country of residence are different, then when did you first move to the country where you currently live?</label>
+        <input type="number" class="form-control" id="inputYearMoved" name="yearMoved">  
+    </div>
+        <div class="form-group">
+            <label for="envTable">
+                    Indicate <b>the age</b> (e.g. 7 years old) at which you started using each of the languages you mentioned in the following environments.
+                </label>
+            <table class="table" id="envTable">
+                <thead>
+                        <tr>
+                            <th scope='col'>LANGUAGE</th>
+                            <th scope='col'>At Home</th>
+                            <th scope='col'>With Friends</th>
+                            <th scope='col'>At school</th>
+                            <th scope='col'>Language Software (e.g. Duolingo)</th>
+                            <th scope='col'>Online Games (e.g. World of Warcraft)</th>
+                            <th scope='col'>Other (please describe)</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input class="form-control" type="text" name="langOne" readonly></td>
+                            <td><input type="number" class="form-control langOne" name="langOneHome" disabled></td>
+                            <td><input type="number" class="form-control langOne" name="langOneFriends" disabled></td>
+                            <td><input type="number" class="form-control langOne" name="langOneSchool" disabled></td>
+                            <td><input type="number" class="form-control langOne" name="langOneSoftware" disabled></td>
+                            <td><input type="number" class="form-control langOne" name="langOneGames" disabled></td>
+                            <td><input type="text" class="form-control langOne" name="langOneOther" disabled></td>
+                        </tr>
+                        <tr>
+                            <td><input class="form-control" type="text" name="langTwo" readonly></td>
+                            <td><input type="number" class="form-control langTwo" name="langTwoHome" disabled></td>
+                            <td><input type="number" class="form-control langTwo" name="langTwoFriends" disabled></td>
+                            <td><input type="number" class="form-control langTwo" name="langTwoSchool" disabled></td>
+                            <td><input type="number" class="form-control langTwo" name="langTwoSoftware" disabled></td>
+                            <td><input type="number" class="form-control langTwo" name="langTwoGames" disabled></td>
+                            <td><input type="text" class="form-control langTwo" name="langTwoOther" disabled></td>
+                        </tr>
+                        <tr>
+                            <td><input class="form-control" type="text"  name="langThree" readonly></td>
+                            <td><input type="number" class="form-control langThree" name="langThreeHome" disabled></td>
+                            <td><input type="number" class="form-control langThree" name="langThreeFriends" disabled></td>
+                            <td><input type="number" class="form-control langThree" name="langThreeSchool" disabled></td>
+                            <td><input type="number" class="form-control langThree" name="langThreeSoftware" disabled></td>
+                            <td><input type="number" class="form-control langThree" name="langThreeGames" disabled></td>
+                            <td><input type="text" class="form-control langThree" name="langThreeOther" disabled></td>
+                        </tr>
+                        <tr>
+                            <td><input class="form-control" type="text"  name="langFour" readonly></td>
+                            <td><input type="number" class="form-control langFour" name="langFourHome" disabled></td>
+                            <td><input type="number" class="form-control langFour" name="langFourFriends" disabled></td>
+                            <td><input type="number" class="form-control langFour" name="langFourSchool" disabled></td>
+                            <td><input type="number" class="form-control langFour" name="langFourSoftware" disabled></td>
+                            <td><input type="number" class="form-control langFour" nsame="langFourGames" disabled></td>
+                            <td><input type="text" class="form-control langFour" name="langFourOther" disabled></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
       <button type="submit" id="questionnairePageOneSubmit" class="btn btn-primary float-right mb-2">Next</button>
   </form>
 </div>

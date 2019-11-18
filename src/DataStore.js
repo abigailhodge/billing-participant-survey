@@ -28,6 +28,16 @@ class DataStore extends Store {
         return this.get(userID);
     } 
 
+    getUserLangs() {
+        var langIds = ["langOne", "langTwo", "langThree", "langFour"];
+        var userLangs = {}
+        for (var i = 0; i < 4; i++) {
+            var language = this.userData.userDemographics[langIds[i]];
+            userLangs[langIds[i]] = language;
+        }
+        return userLangs;
+    }
+
     initUser(userID) {
         if (typeof(this.getUserData(userID)) === 'undefined') {
             this.userData.userID = userID;
