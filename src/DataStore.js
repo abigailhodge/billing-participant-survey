@@ -7,8 +7,10 @@ class DataStore extends Store {
         this.userData = {
             "userID": 0,
             "userStudies": [],
-            "userWordAnswers": {},
-            "userOEAnswers":{},
+            "userOxfordResult": 0,
+            "userSpellingResult": 0,
+            "userSpellingAnswers": {},
+            "userOxfordAnswers":{},
             "userDemographics":{},
         }
     }
@@ -17,8 +19,13 @@ class DataStore extends Store {
         if (this.userId != 0) {
             this.set(this.userData.userID, this.userData);
             this.userData = {
-            "userID":0,
-            "userWordAnswers":{}
+            "userID": 0,
+            "userStudies": [],
+            "userOxfordResult": 0,
+            "userSpellingResult": 0,
+            "userSpellingAnswers": {}, 
+            "userOxfordAnswers": {},
+            "userDemographics": {},
             }
         }
         
@@ -41,7 +48,6 @@ class DataStore extends Store {
     initUser(userID) {
         if (typeof(this.getUserData(userID)) === 'undefined') {
             this.userData.userID = userID;
-            this.userData.userStudies = [];
         } else {
             this.userData = this.getUserData(userID)
         }
@@ -56,12 +62,24 @@ class DataStore extends Store {
         this.userData.userStudies.push(studyID);
     }
 
-    setUserWordAnswers(wordAnswers) {
-        this.userData.userWordAnswers = wordAnswers;
+    setUserSpellingAnswers(spellingAnswers) {
+        this.userData.userSpellingAnswers = spellingAnswers;
+    }
+
+    setUserSpellingResult(spellingResult) {
+        this.userData.userSpellingResult = spellingResult;
+    }
+
+    setUserOxfordAnswers(oxfordAnswers) {
+        this.userData.userOxfordAnswers = oxfordAnswers;
     }
 
     setUserQuestionnaireOneAnswers(questionnaireOneAnswers) {
         this.userData.userDemographics = questionnaireOneAnswers;
+    }
+
+    setUserOxfordResult(oxfordResult) {
+        this.userData.userOxfordResult = oxfordResult;
     }
 }
 

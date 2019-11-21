@@ -1,0 +1,25 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <title>Export Users</title>
+    </head>
+    <body>
+        <div class="container">
+                <div class="row">
+                    <h2 class="col-lg-12 mx-auto">Export User Data</h2>
+                </div>
+            </div>
+            <div class="container">
+                <form id="exportUsersForm">
+                    <div class="form-group">
+                        <label for="inputID">Please enter the ID of the study you would like to export</label>
+                        <input type="text" class="form-control" id="studyID" name="studyID" required>  
+                    </div>
+                    <button type="submit" id="exportUserSubmit" class="btn btn-primary d-block mb-2 mx-auto">Export</button>
+                </form>
+            </div>
+        <script src='./exportUsers.js'></script>
+    </body>

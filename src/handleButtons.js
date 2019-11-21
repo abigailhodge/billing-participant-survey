@@ -2,7 +2,7 @@
 
 var electron = require('electron');
 var ipc = electron.ipcRenderer;
-
+var wordsSelected = {};
 var wordButtons = document.getElementsByClassName("btn-light");  
 var toggleWordButton = function() {
     var word = this.innerHTML;
@@ -11,16 +11,16 @@ var toggleWordButton = function() {
     } else {
         this.classList.add("incorrect")
     }
-    ipc.send('word-button-toggled', word);
+    wordsSelected[word] = !wordsSelected[word];
 }
 for (var i = 0; i < wordButtons.length; i++) {
-    ipc.send('init-word', wordButtons[i].innerHTML);
+    wordsSelected[wordButtons[i].innerHTML] = false;
     wordButtons[i].addEventListener('click', toggleWordButton, false);
 }
 
 var submitButton = document.getElementById("submit-button");
 var submitDoc = function() {
-    ipc.send('submit-answers');
+    ipc.send('submitSpelling', wordsSelected);
     ipc.send('goToURL', 'startscreen.html')
 }
 submitButton.addEventListener('click', submitDoc, false);
