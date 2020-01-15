@@ -71,10 +71,6 @@ ipc.on('submit-questionnaire-1', (event, arg) => {
   ds.setUserQuestionnaireOneAnswers(arg);
 });
 
-ipc.on('submitOxford', (event, arg) => {
-  ds.setUserOxfordAnswers(arg);
-  ds.setUserOxfordResult(autogradeOxford(arg));
-});
 
 ipc.on('goToURL', (event, arg) => {
   mainWindow.loadURL(`file://${__dirname}/` + arg);
@@ -106,7 +102,7 @@ ipc.on('getUserLangs', (event) => {
 ipc.on('exportData', (event, arg) => {
   console.log(arg)
   var allUsers = ds.store;
-  var keysWanted = ['userID', 'userOxfordResult', 'userSpellingResult','userDemographics'];
+  var keysWanted = ['userID', 'userSpellingResult','userDemographics'];
   var headerList = [];
   var headerListGenerated = false;
   var csvContent = "data:text/csv;charset=utf-8,";
@@ -148,68 +144,6 @@ ipc.on('exportData', (event, arg) => {
     event.reply('csvFile', encodedUri);
 });
 
-var autogradeOxford = function(userAnswers) {
-  var correctAnswers = {
-    "questionEight": "the coldest",
-    "questionEighteen": "in",
-    "questionEleven": "won",
-    "questionFifteen": "both",
-    "questionFifty": "I've realized",
-    "questionFive": "it rains",
-    "questionForty": "is coming.",
-    "questionFortyEight": "flying",
-    "questionFortyFive": "For",
-    "questionFortyFour": "that",
-    "questionFortyNine": "but",
-    "questionFortyOne": "will",
-    "questionFortySeven": "that",
-    "questionFortySix": "of",
-    "questionFortyThree": "are",
-    "questionFortyTwo": "had",
-    "questionFour": "the weather.",
-    "questionFourteen": "had",
-    "questionNine": "Most",
-    "questionNineteen": "had to",
-    "questionOne": "boils",
-    "questionSeven": "warm",
-    "questionSeventeen": "believe",
-    "questionSix": "any",
-    "questionSixteen": "all over",
-    "questionTen": "few",
-    "questionThirteen": "made him",
-    "questionThirty": "Theirs",
-    "questionThirtyEight": "information.",
-    "questionThirtyFive": "man",
-    "questionThirtyFour": "would be",
-    "questionThirtyNine": "are they",
-    "questionThirtyOne": "such a",
-    "questionThirtySeven": "on",
-    "questionThirtySix": "for",
-    "questionThirtyThree": "not much",
-    "questionThirtyTwo": "could",
-    "questionThree": "to keep",
-    "questionTwelve": "had won",
-    "questionTwenty": "will",
-    "questionTwentyEight": "which",
-    "questionTwentyFive": "in flying",
-    "questionTwentyFour": "little",
-    "questionTwentyNine": "what",
-    "questionTwentyOne": "the aeroplane",
-    "questionTwentySeven": "was",
-    "questionTwentySix": "last",
-    "questionTwentyThree": "had tried",
-    "questionTwentyTwo": "quite a",
-    "questionTwo": "it is"
-  }
-  var total = Object.keys(userAnswers).length;
-  var correct = 0;
-  Object.entries(userAnswers).forEach(([key, value]) => {
-    if (value === correctAnswers[key]) {
-      correct++;
-    }
-  });
-  return (correct / total) * 100 ;
-}
 
 var autogradeSpelling = function(userAnswers) {
   var correctAnswers = {
