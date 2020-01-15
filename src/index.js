@@ -100,7 +100,6 @@ ipc.on('getUserLangs', (event) => {
 });
 
 ipc.on('exportData', (event, arg) => {
-  console.log(arg)
   var allUsers = ds.store;
   var keysWanted = ['userID', 'userSpellingResult','userDemographics'];
   var headerList = [];
@@ -381,7 +380,5 @@ var autogradeSpelling = function(userAnswers) {
       trueNegatives++;
     }
   });
-  console.log(actualPositives);
-  console.log(actualNegatives);
   return ((trueNegatives / actualNegatives * 100) + (truePositives / actualPositives * 100)) / 2
 }

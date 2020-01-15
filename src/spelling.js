@@ -21,6 +21,6 @@ for (var i = 0; i < wordButtons.length; i++) {
 var submitButton = document.getElementById("submit-button");
 var submitDoc = function() {
     ipc.send('submitSpelling', wordsSelected);
-    ipc.send('goToURL', 'startscreen.html')
+    ipc.send('goToURL', 'endScreen.html')
 }
 submitButton.addEventListener('click', submitDoc, false);
